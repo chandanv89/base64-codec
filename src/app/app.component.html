@@ -1,0 +1,53 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h1 class="text-center">Base64 Codec</h1>
+    </div>
+
+    <div class="row">
+      <ul ngbNav #nav="ngbNav" class="nav-tabs">
+        <li [ngbNavItem]="1">
+          <button ngbNavLink>Encoder</button>
+          <ng-template ngbNavContent>
+            <div class="row">
+              <div class="col-md-6">
+                <textarea [formControl]="encoderInput" class="form-control in" placeholder="Enter text to encode"
+                  rows="20"></textarea>
+              </div>
+              <div class="col-md-6">
+                <textarea class="form-control out" [value]="encoderOutput" readonly placeholder="Encoded text"
+                  rows="20"></textarea>
+              </div>
+            </div>
+          </ng-template>
+        </li>
+
+        <li [ngbNavItem]="2">
+          <button ngbNavLink>Decoder</button>
+          <ng-template ngbNavContent>
+            <div class="row">
+              <div class="col-md-6">
+                <textarea [formControl]="decoderInput" class="form-control in" placeholder="Enter text to decode"
+                  rows="20"></textarea>
+              </div>
+              <div class="col-md-6">
+                <textarea class="form-control out" [value]="enablePrettify ? parsedOutput : decoderOutput" readonly
+                  placeholder="Decoded text" rows="20"></textarea>
+
+                <div class="prettify-checkbox"
+                  title="Pretty-print JSON outputs. Enabling this may modify the encoded text by adding linebreaks and spaces to make it more readable.">
+                  <input type="checkbox" [(ngModel)]="enablePrettify" [disabled]="!isValidJson(decoderOutput)"
+                    id="prettify-checkbox" />
+                  <label for="prettify-checkbox">Prettify</label>
+                </div>
+              </div>
+            </div>
+          </ng-template>
+        </li>
+      </ul>
+
+      <div [ngbNavOutlet]="nav" class="mt-2"></div>
+    </div>
+  </div>
+
+  <router-outlet />

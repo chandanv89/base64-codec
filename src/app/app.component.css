@@ -1,0 +1,17 @@
+.container .in,
+.container .out {
+  font-family: Iosevka Nerd Font, Meslo, Hack, SF Mono, JetBrains Mono,
+    Source Code Pro, Pragmasevka Nerd Font, Monolisa, monospace;
+
+  overflow: auto;
+  resize: none;
+}
+
+.container {
+  width: 100%;
+  margin: 2rem auto;
+}
+
+#prettify-checkbox {
+  margin: 1rem 0.5rem 0 0;
+}
