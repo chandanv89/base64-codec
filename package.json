@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "description": "Offline Base64 Encoder/Decoder",
   "author": "Chandan Veerabhadrappa",
+  "license": "Apache-2.0",
+  "icon": "src/assets/base64.icon.png",
   "main": "./main.js",
   "scripts": {
     "ng": "ng",
