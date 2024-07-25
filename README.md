@@ -2,6 +2,22 @@
 
 A simple base-64 encoded and decoder. This is an effective offline alternative to the online tools like https://www.base64decode.org/ as your data never leave your local machine.
 
+<table>
+<tr>
+<td>
+
+![screenshot-encoder](/src/assets/linux_encoder.png)
+
+</td>
+<td>
+
+![screenshot-decoder](/src/assets/linux_decoder.png)
+
+</td>
+
+</tr>
+</table>
+
 ## Development server
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.2.3.
@@ -33,14 +49,13 @@ I'm using Electron Forge to create an executable (or, a distributable) file. You
       <tr><td>
 
    ```json
-   ...
+   //...
    "scripts": {
    "start": "electron-forge start",
    "package": "electron-forge package",
    "make": "electron-forge make"
    },
-   ...
-
+   //...
    ```
 
       </td></tr>
