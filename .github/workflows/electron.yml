@@ -1,0 +1,34 @@
+name: NodeJS with Electron
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        os:
+          [
+            { name: "linux", image: "ubuntu-latest" },
+            { name: "windows", image: "windows-latest" },
+            { name: "macos", image: "macos-latest" },
+          ]
+    runs-on: ${{ matrix.os.image }}
+    steps:
+      - name: Github checkout
+        uses: actions/checkout@master
+      - name: Setup Node
+        uses: actions/setup-node@master
+        with:
+          node-version: 20.x
+      - run: npm ci
+      - name: Build app
+        run: npm run build
+      - name: Import app into Electron Forge
+        run: npx electron-forge import
+      - name: Publish app
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+        run: npm run publish
