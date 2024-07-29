@@ -63,6 +63,8 @@ module.exports = {
           name: "base64-codec",
         },
         prerelease: true,
+        draft: true,
+        authToken: process.secrets.GH_TOKEN,
       },
     },
   ],
