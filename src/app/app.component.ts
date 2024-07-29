@@ -3,6 +3,7 @@ import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterOutlet } from '@angular/router';
 import { NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
 import { CodecService } from './services/codec.service';
+import sha1 from 'sha1';
 
 @Component({
   selector: 'app-root',
@@ -16,11 +17,16 @@ export class AppComponent {
   enablePrettify = new FormControl(true);
 
   encoderInput = new FormControl('');
-  decoderInput = new FormControl('');
 
   encoderOutput: string = '';
+
+  decoderInput = new FormControl('');
   decoderOutput: string = '';
   parsedOutput: string = '';
+
+  hashingInput = new FormControl('');
+  hashingAlgorithm = new FormControl('sha1');
+  hashingOutput: string = '';
 
   constructor(private codecService: CodecService) {
     this.encoderInput.valueChanges.subscribe(() => this.encode());
@@ -37,6 +43,7 @@ export class AppComponent {
     this.decoderOutput = this.codecService.decode(
       this.decoderInput.value ?? ''
     );
+
     if (this.isValidJson(this.decoderOutput)) {
       this.parsedOutput = JSON.stringify(
         JSON.parse(this.decoderOutput),
@@ -55,5 +62,19 @@ export class AppComponent {
     } catch (e) {
       return false;
     }
+  }
+
+  hash() {
+    console.log(
+      'Hashing input: ' +
+        this.hashingInput.value +
+        ' with algorithm: ' +
+        this.hashingAlgorithm.value
+    );
+    this.hashingOutput = sha1(this.hashingInput.value + '');
+  }
+
+  select($event: any) {
+    console.log($event.srcElement.select());
   }
 }

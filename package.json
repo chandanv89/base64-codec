@@ -15,8 +15,10 @@
     "serve:ssr:base64-codec": "node dist/base64-codec/server/server.mjs",
     "package": "electron-forge package",
     "make": "electron-forge make",
-    "lint": "ng lint"
+    "lint": "ng lint",
+    "publish": "electron-forge publish"
   },
+  "productName": "base64-codec",
   "private": true,
   "dependencies": {
     "@angular/animations": "^17.2.0",
@@ -35,6 +37,7 @@
     "electron-squirrel-startup": "^1.0.1",
     "express": "^4.18.2",
     "rxjs": "~7.8.0",
+    "sha1": "^1.1.1",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.3"
   },
@@ -55,10 +58,12 @@
     "@electron-forge/maker-zip": "^7.4.0",
     "@electron-forge/plugin-auto-unpack-natives": "^7.4.0",
     "@electron-forge/plugin-fuses": "^7.4.0",
+    "@electron-forge/publisher-github": "^7.4.0",
     "@electron/fuses": "^1.8.0",
     "@types/express": "^4.17.17",
     "@types/jasmine": "~5.1.0",
     "@types/node": "^18.18.0",
+    "@types/sha1": "^1.1.5",
     "@typescript-eslint/eslint-plugin": "7.11.0",
     "@typescript-eslint/parser": "7.11.0",
     "electron": "^31.2.1",
